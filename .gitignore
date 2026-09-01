@@ -1,4 +1,4 @@
-# 原始航天资料不入仓库（DATA_GOVERNANCE）
+# 原始航天资料存放于仓库外（../Data，见 DATA_GOVERNANCE），仓库内不出现资料文件
 data/
 
 __pycache__/
