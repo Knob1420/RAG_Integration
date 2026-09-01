@@ -1,0 +1,5 @@
+# 原始航天资料不入仓库（DATA_GOVERNANCE）
+data/
+
+__pycache__/
+.pytest_cache/
