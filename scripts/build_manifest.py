@@ -20,18 +20,34 @@ SUPPORTED_EXTS = {".pdf", ".doc", ".docx", ".xlsx"}
 def is_junk(name: str) -> bool:
     return name.startswith("~$")
 
-# 人工确认前填 UNKNOWN 的字段（filesystem_mtime 刻意不叫 document_version）
+# 字段名对齐 TASK-P00-003A 契约；人工确认前填 UNKNOWN（filesystem_mtime 刻意不叫 document_version）
 FIELDS = [
     "source_id",
     "file_name",
     "relative_path",
-    "extension",
-    "size_bytes",
-    "sha256",
+    "file_extension",
+    "file_size",
+    "checksum_sha256",
     "filesystem_mtime",
+    "document_type",
+    "title",
+    "document_internal_id",
     "document_version",
-    "safety_level",
+    "effective_version",
+    "document_status",
+    "subsystem",
+    "security_level",
+    "external_model_allowed",
+    "parse_status",
+    "notes",
 ]
+
+# 人工确认前为 UNKNOWN 的字段（重扫时保留已确认值）
+UNKNOWN_OK_FIELDS = {
+    "document_type", "title", "document_internal_id", "document_version",
+    "effective_version", "document_status", "subsystem",
+    "security_level", "external_model_allowed",
+}
 
 
 def make_source_id(relative_path: str) -> str:
@@ -59,13 +75,22 @@ def scan(root: Path) -> list:
             "source_id": make_source_id(rel),
             "file_name": p.name,
             "relative_path": rel,
-            "extension": p.suffix.lower(),
-            "size_bytes": st.st_size,
-            "sha256": sha256_file(p),
+            "file_extension": p.suffix.lower(),
+            "file_size": st.st_size,
+            "checksum_sha256": sha256_file(p),
             "filesystem_mtime": datetime.fromtimestamp(
                 st.st_mtime).isoformat(timespec="seconds"),
+            "document_type": "UNKNOWN",
+            "title": "UNKNOWN",
+            "document_internal_id": "UNKNOWN",
             "document_version": "UNKNOWN",
-            "safety_level": "UNKNOWN",
+            "effective_version": "UNKNOWN",
+            "document_status": "UNKNOWN",
+            "subsystem": "UNKNOWN",
+            "security_level": "UNKNOWN",
+            "external_model_allowed": "UNKNOWN",
+            "parse_status": "NOT_STARTED",
+            "notes": "",
         })
     return records
 
@@ -86,12 +111,16 @@ def build_manifest(root: Path, output: Path) -> dict:
     removed = sorted(set(old) - set(new))
     changed = sorted(
         rel for rel in set(new) & set(old)
-        if new[rel]["sha256"] != old[rel]["sha256"]
+        if new[rel]["checksum_sha256"] != old[rel]["checksum_sha256"]
     )
 
     # 保留已有 source_id：同路径沿用旧 id（含内容变化时，保持资料血缘）
+    # 保留已人工确认的元数据（旧值非 UNKNOWN/非空时，重扫不覆盖回 UNKNOWN）
     for rel in set(new) & set(old):
         new[rel]["source_id"] = old[rel]["source_id"]
+        for col in UNKNOWN_OK_FIELDS:
+            if old[rel].get(col, "UNKNOWN") != "UNKNOWN" and new[rel][col] == "UNKNOWN":
+                new[rel][col] = old[rel][col]
 
     with output.open("w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)

@@ -70,7 +70,7 @@ def test_modified_file_detected_same_source_id(tmp_path):
     r = build_manifest(mats, out)
     assert r["changed"] == 1 and r["changed_paths"] == ["a.pdf"]
     new = read_rows(out)[0]
-    assert new["sha256"] != old["sha256"]
+    assert new["checksum_sha256"] != old["checksum_sha256"]
     assert new["source_id"] == old["source_id"]  # 内容变化不换 id，保留血缘
 
 
@@ -95,6 +95,24 @@ def test_office_lock_file_excluded(tmp_path):
     assert read_rows(out)[0]["file_name"] == "real.docx"
 
 
+def test_rescan_preserves_confirmed_metadata(tmp_path):
+    mats, out = tmp_path / "mats", tmp_path / "data_manifest.csv"
+    mats.mkdir()
+    make_file(mats, "a.pdf")
+    build_manifest(mats, out)
+    rows = read_rows(out)
+    rows[0]["security_level"] = "内部可用"
+    rows[0]["external_model_allowed"] = "YES"
+    with out.open("w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=list(rows[0]))
+        w.writeheader()
+        w.writerows(rows)
+    build_manifest(mats, out)
+    row = read_rows(out)[0]
+    assert row["security_level"] == "内部可用"  # 重扫不冲掉已确认值
+    assert row["external_model_allowed"] == "YES"
+
+
 def test_unknown_fields_and_mtime_field_name(tmp_path):
     mats, out = tmp_path / "mats", tmp_path / "data_manifest.csv"
     mats.mkdir()
@@ -102,5 +120,7 @@ def test_unknown_fields_and_mtime_field_name(tmp_path):
     build_manifest(mats, out)
     row = read_rows(out)[0]
     assert row["document_version"] == "UNKNOWN"
-    assert row["safety_level"] == "UNKNOWN"
+    assert row["security_level"] == "UNKNOWN"
+    assert row["external_model_allowed"] == "UNKNOWN"
+    assert row["parse_status"] == "NOT_STARTED"
     assert "filesystem_mtime" in row  # mtime 不冒充 document_version
