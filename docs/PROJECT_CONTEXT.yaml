@@ -1,0 +1,25 @@
+project_id: aerospace-x100
+project_name: 航天计算载荷证据型知识助手
+current_phase: P00
+target_object: 卫星计算载荷-智加X100计算模块
+source_count: 83
+formats:
+  - pdf
+  - doc
+  - xlsx
+code_available: false
+document_types:
+  - 会议纪要
+  - IDS表
+  - 验收测试
+  - 方案设计
+  - 总结报告
+  - 环境试验大纲
+  - 说明书
+filename_convention: inconsistent
+version_evidence:
+  - filesystem_mtime
+  - document_internal_version_if_present
+explicit_references: partial
+external_model_api: allowed
+current_status: scope_confirmed_p00_in_progress
