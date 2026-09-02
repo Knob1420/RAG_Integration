@@ -1,0 +1,30 @@
+# P00-L 学习冲刺计划（learning sprint）
+
+阶段定义与通过标准见 `docs/phases/P00-L-learning-bridge.md`。
+
+## 建议选题（6 问，可换）
+
+| 槽位 | 建议 | 理由 |
+|------|------|------|
+| 参数/IDS | **Q-006** CPU遥控/遥测协议最后修订时间 | 表内版本字段 vs 文件 mtime，天然引出版本意识 |
+| 验收测试 | **Q-014** 老炼遥控指令遍历结论 | 条件/结果/结论分列表格，"完成≠通过"的典型 |
+| 方案/会议决策 | **Q-021** 会议 CPU 核数建议是否落实 | "建议→设计"追踪，证据不足的典型 |
+| 跨文档追溯 | **Q-028** 程控时间表 8.31 vs 9.2 | 两个文件的显式 diff，最容易亲手做对 |
+| 冲突检测 | **Q-040** CPU 4核建议与器件表闭环 | 正确答案就是"判不了"——练证据边界 |
+| 资料不足 | **Q-037** 三份扫描件能否提取 | 拒答意识 + OCR 前置条件 |
+
+（换题随意，保住 6 个槽位类型即可。）
+
+## 工作顺序
+
+1. 逐题：`python scripts/extract_anchors.py <source_id>` 定位 → 自己读原文 → 复制 `question-notebooks/LEARNING_CARD_TEMPLATE.md` 填卡（先不看我写的 question_cards）；
+2. 6 卡完成后：填 `domain-map.md`（关系标注显式/推测）；
+3. 整理 `retrieval-problem-map.md`；
+4. 过程中随时记 `knowledge-log.md`（≥5 条）；
+5. 与 Codex/用户复盘 → 对照 P00-L 通过标准 → 进 P01。
+
+## 支撑工具
+
+- `scripts/extract_anchors.py <source_id>` — 标题/表头/信号句定位（本地输出，不落盘）
+- `docs/reports/P00-data-profile.md` — 16 份结构画像（背景参考）
+- `eval/questions/question_cards/` — **填完卡再看**，对照偏差
