@@ -1,0 +1,22 @@
+question_id: Q-030
+question: 测试覆盖性检查矩阵中，哪些测试项目未覆盖'整星集成测试'？
+task_type: cross_document_trace
+business_context: 覆盖性缺口识别
+related_source_ids:
+- SRC-7ABA176185
+evidence_locations:
+- 覆盖性报告 表(测试项目 × 单机验收/系统集成/整星集成 三列)
+answerable: partially_answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 按矩阵列出空缺项
+- 如矩阵存在空行/合并单元格致无法判定须指出
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

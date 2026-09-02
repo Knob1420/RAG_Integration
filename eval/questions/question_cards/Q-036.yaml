@@ -1,0 +1,21 @@
+question_id: Q-036
+question: 测试覆盖性分析报告自身的文件编号与版本号是什么？
+task_type: time_or_version_compare
+business_context: 文档编号登记
+related_source_ids:
+- SRC-7ABA176185
+evidence_locations:
+- 覆盖性报告 表(文件编号 SCS-01-… / 版本号 字段)及修订表
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出文件编号与版本号字段值
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 1
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

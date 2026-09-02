@@ -1,0 +1,25 @@
+question_id: Q-002
+question: 智加X100计算模块对外电连接器有哪些？各自的接口类型和功能是什么？
+task_type: interface_lookup
+business_context: 星上集成对接
+related_source_ids:
+- SRC-117228955F
+- SRC-F8E406DD21
+evidence_locations:
+- 技术说明书 5.外部接口/表 电连接器(序号/编号/型号/类型/功能)
+- 计算模块IDS 接口数据单9 电连接器
+answerable: answerable
+requires_multiple_sources: true
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 逐连接器给出类型与功能
+- 两份资料结论需一致或指出差异
+forbidden_claims:
+- 不得混淆计算模块与电源模块的连接器
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

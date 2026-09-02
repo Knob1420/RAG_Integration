@@ -1,0 +1,22 @@
+question_id: Q-016
+question: 返修后上星测试进行了多少次上电启动？结论如何？
+task_type: test_result_lookup
+business_context: 返修归零确认
+related_source_ids:
+- SRC-7A10397C1D
+evidence_locations:
+- 返修后上星测试报告 正样件装星启动测试段(上电次数与无异常结论)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出次数与结论
+- 注明 TMS 遥测判读依据(如文中有)
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

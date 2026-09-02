@@ -1,0 +1,25 @@
+question_id: Q-021
+question: 初样方案讨论会(20240306)对CPU核数提出了什么建议？
+task_type: meeting_action_lookup
+business_context: 设计变更溯源
+related_source_ids:
+- SRC-9E3D43D729
+- SRC-F0D610E0D6
+evidence_locations:
+- 会议纪要 建议段(2核→4核句)
+- 对照总体设计方案 3.3 节 CPU 选型
+answerable: partially_answerable
+requires_multiple_sources: true
+version_or_time_constraint: 建议→设计落实需两份资料比对
+status_constraint: 建议类表述不得写成已决定
+required_claims:
+- 给出建议原文位置
+- 比对该建议是否反映在总体设计方案中，不能确认则说明证据不足
+forbidden_claims:
+- 不得把'建议'表述为'已执行'
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

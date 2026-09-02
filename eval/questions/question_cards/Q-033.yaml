@@ -1,0 +1,23 @@
+question_id: Q-033
+question: UBOOT与CPU(linux)软件的版本迭代时间线是什么？
+task_type: time_or_version_compare
+business_context: 软件版本演进
+related_source_ids:
+- SRC-B0DA913F5C
+evidence_locations:
+- 软件版本控制 sheet'Sheet1'(板卡级软件版本号/版本号/更新时间/更新内容 列)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: 以表内'更新时间/版本号'为准
+status_constraint: NONE
+required_claims:
+- 分别梳理两个软件的版本序列
+- 区分'提测版本'与'版本号'两列
+forbidden_claims:
+- 不得混淆提测版本与正式版本号
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

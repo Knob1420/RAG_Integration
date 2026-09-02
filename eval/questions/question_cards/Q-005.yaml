@@ -1,0 +1,22 @@
+question_id: Q-005
+question: 智加X100整机对外的低速接口有哪些？通过什么器件实现？
+task_type: interface_lookup
+business_context: 测控通信方案核对
+related_source_ids:
+- SRC-F0D610E0D6
+evidence_locations:
+- 总体设计方案 3.3/3.5 节 低速接口描述段(RS422/CAN/GPIO 与 CPLD)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 列全低速接口种类与数量
+- 指明由 CPLD 实现及其职责
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

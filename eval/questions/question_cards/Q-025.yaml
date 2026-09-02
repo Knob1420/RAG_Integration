@@ -1,0 +1,22 @@
+question_id: Q-025
+question: 载板设计中CPU与万兆网/系统盘/数据盘采用什么通道？系统盘接口如何实现？
+task_type: design_decision_lookup
+business_context: 架构设计追溯
+related_source_ids:
+- SRC-F0D610E0D6
+evidence_locations:
+- 总体设计方案 3.3 节 PCIe通道与mSATA实现句
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出通道类型
+- 说明系统盘接口的实现方式
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

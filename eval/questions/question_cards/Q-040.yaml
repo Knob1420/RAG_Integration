@@ -1,0 +1,25 @@
+question_id: Q-040
+question: 会议建议的CPU 4核方案是否落实到了总体设计方案的器件选型？两处资料能否闭环判定？
+task_type: conflict_detection
+business_context: 建议→设计闭环检验
+related_source_ids:
+- SRC-9E3D43D729
+- SRC-F0D610E0D6
+evidence_locations:
+- 会议纪要 CPU核数建议句
+- 总体设计方案 器件表(序号/器件类型/具体型号/厂商/备注)
+answerable: partially_answerable
+requires_multiple_sources: true
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 检查器件表 CPU 行是否可判定核数
+- 若型号无法判断核数则明确'证据不足'而非'未落实'
+forbidden_claims:
+- 不得在证据不足时断言已落实或未落实
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: hard
+generation_method: profile_anchor
+review_status: machine_draft

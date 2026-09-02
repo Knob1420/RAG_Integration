@@ -1,0 +1,28 @@
+question_id: Q-035
+question: 程控时间表8.28/8.31/9.2四份文件按文件修改时间排序如何？该顺序与内容演进是否吻合？
+task_type: time_or_version_compare
+business_context: 版本线索有效性检验
+related_source_ids:
+- SRC-CD675E4634
+- SRC-7878EEE3F2
+- SRC-797371ABE3
+- MANIFEST
+evidence_locations:
+- manifest filesystem_mtime 字段(2025-08~09)
+- 各文件 Sheet2 程控条目时间列
+answerable: partially_answerable
+requires_multiple_sources: true
+version_or_time_constraint: filesystem_mtime 仅作排序线索, 不等于 document_version
+status_constraint: NONE
+required_claims:
+- 给出四份文件的 mtime 排序
+- 与表内程控时间演进比对并说明是否吻合
+- 明确 mtime 的线索局限性
+forbidden_claims:
+- 不得将 mtime 序列称为文档版本号
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: manifest_derived
+review_status: machine_draft

@@ -1,0 +1,23 @@
+question_id: Q-039
+question: GPU板子卡问题原厂分析是否已有结论？项目侧的处理建议是什么？
+task_type: insufficient_evidence
+business_context: 遗留问题跟踪
+related_source_ids:
+- SRC-7A10397C1D
+evidence_locations:
+- 返修报告 处理情况和建议 段(原厂反馈/个性问题/备件不复现句)
+answerable: partially_answerable
+requires_multiple_sources: false
+version_or_time_constraint: 以报告撰写时点为准，后续结论未见资料
+status_constraint: NONE
+required_claims:
+- 区分'原厂结论'与'项目侧建议'
+- 原厂结论标注为未见/短期无法给出
+forbidden_claims:
+- 不得虚构原厂分析结论
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

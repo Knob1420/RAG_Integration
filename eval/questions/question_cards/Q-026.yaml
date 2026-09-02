@@ -1,0 +1,25 @@
+question_id: Q-026
+question: 正样件总结报告的'引用文件'章节引用了哪些文件？其中哪些能按编号对应到本项目已登记资料？
+task_type: cross_document_trace
+business_context: 追溯图种子
+related_source_ids:
+- SRC-321374652A
+- MANIFEST
+evidence_locations:
+- 总结报告 '引用文件' 节编号列表
+- data_manifest.csv 文件名/编号匹配
+answerable: answerable
+requires_multiple_sources: true
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 列出引用文件
+- 逐项标注是否可回链到 manifest source_id
+forbidden_claims:
+- 不得虚构未登记的引用对应
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

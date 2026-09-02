@@ -1,0 +1,26 @@
+question_id: Q-037
+question: 三份《（硬件）验收测试记录表》PDF为近重复扫描件，其测试结论目前能否提取？需要什么前置条件？
+task_type: insufficient_evidence
+business_context: 扫描件解析缺口
+related_source_ids:
+- SRC-D669ED4FD3
+- SRC-F0476730C9
+evidence_locations:
+- 'P00-data-profile: 8/8页 chars<50(无文本层)'
+- manifest 三份同名记录(同尺寸不同哈希)
+answerable: unanswerable
+requires_multiple_sources: false
+version_or_time_constraint: 依赖 OCR(parse_status=PENDING)
+status_constraint: NONE
+required_claims:
+- 明确回答'当前不可回答'及原因
+- 给出前置条件(OCR/版面还原)
+- 引用三份副本的 source_id
+forbidden_claims:
+- 不得猜测记录表内容
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: duplicate_pair_derived
+review_status: machine_draft

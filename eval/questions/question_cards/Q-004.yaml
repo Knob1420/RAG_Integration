@@ -1,0 +1,21 @@
+question_id: Q-004
+question: 电源模块IDS表的文件编号是什么？
+task_type: parameter_lookup
+business_context: 文档编号体系登记
+related_source_ids:
+- SRC-D24F1ADE39
+evidence_locations:
+- 电源模块IDS 表内 文件编号字段(SCS-01-IDS-1 布局)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出文件编号并说明所在表格位置
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 1
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

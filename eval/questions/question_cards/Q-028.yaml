@@ -1,0 +1,23 @@
+question_id: Q-028
+question: 程控时间表8.31与9.2相比，程控安排发生了哪些变化？
+task_type: cross_document_trace
+business_context: 程控演进比对
+related_source_ids:
+- SRC-7878EEE3F2
+- SRC-797371ABE3
+evidence_locations:
+- 两文件 sheet'Sheet2'(序号/北京时间/星上时间/任务/指令/判据 列)
+answerable: answerable
+requires_multiple_sources: true
+version_or_time_constraint: 比对以表内'北京时间/星上时间'列为准
+status_constraint: NONE
+required_claims:
+- 列出新增/删除/变更的程控条目
+- 说明两表共同列结构
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

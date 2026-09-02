@@ -1,0 +1,24 @@
+question_id: Q-027
+question: 遥控遥测汇总表的'修改记录'sheet与各协议sheet的'最后修订时间'如何共同反映协议版本演进？
+task_type: cross_document_trace
+business_context: 协议版本链
+related_source_ids:
+- SRC-3956F61513
+evidence_locations:
+- 汇总表 sheet'修改记录'(序号/修改时间/修改内容/修改人)
+- 各协议sheet 表头'最后修订时间'行
+answerable: answerable
+requires_multiple_sources: true
+version_or_time_constraint: 须用表内修订时间，不用文件mtime
+status_constraint: NONE
+required_claims:
+- 梳理修改记录条目与各协议修订时间的对应
+- 指出CPU与CPLD协议的最近修订
+forbidden_claims:
+- 不得将文件 mtime 当作协议版本时间
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

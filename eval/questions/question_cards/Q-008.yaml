@@ -1,0 +1,21 @@
+question_id: Q-008
+question: 智加X100计算模块的包络尺寸是多少？
+task_type: parameter_lookup
+business_context: 结构安装适配
+related_source_ids:
+- SRC-117228955F
+evidence_locations:
+- 技术说明书 3.4.1 包络尺寸 节
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出尺寸数值及单位并引用节号
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

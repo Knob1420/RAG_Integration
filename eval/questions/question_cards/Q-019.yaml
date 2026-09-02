@@ -1,0 +1,22 @@
+question_id: Q-019
+question: 环境试验大纲对故障修复后再试验的时间有何规定与建议？
+task_type: parameter_lookup
+business_context: 试验规则查询
+related_source_ids:
+- SRC-CE7695FE95
+evidence_locations:
+- 环境试验大纲 '再试验' 节(累计上限与建议区间句)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: 区分'规定上限'与'建议范围'两种表述
+required_claims:
+- 给出累计上限数值
+- 给出建议区间
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

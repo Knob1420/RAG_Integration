@@ -1,0 +1,21 @@
+question_id: Q-015
+question: 老炼测试覆盖了哪几个测试日期/阶段？
+task_type: test_result_lookup
+business_context: 测试过程完整性
+related_source_ids:
+- SRC-83765A0E9F
+evidence_locations:
+- 老炼测试结果 章节标题(8月27日程控/8月28日/9月1日/9月2日 各节)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: 答案按文档章节时序整理
+status_constraint: NONE
+required_claims:
+- 列出全部测试日及当日项目
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

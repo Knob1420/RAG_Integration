@@ -1,0 +1,25 @@
+question_id: Q-020
+question: 《智加X100（硬件）验收测试记录表》中各测试项目的结论是什么？
+task_type: test_result_lookup
+business_context: 验收测试记录数字化
+related_source_ids:
+- SRC-D669ED4FD3
+- SRC-F0476730C9
+evidence_locations:
+- 验收测试记录表 PDF——纯扫描件(8/8页无文本层, 见 P00-data-profile)
+- '待 OCR 后补: 各测试项目行''测试结果/结论''列'
+answerable: unanswerable
+requires_multiple_sources: false
+version_or_time_constraint: 依赖 OCR 化(parse_status=PENDING)
+status_constraint: NONE
+required_claims:
+- 回答前须声明扫描件未解析
+- OCR 后按行给出结论
+forbidden_claims:
+- 不得在无证据时声称全部通过
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: hard
+generation_method: profile_anchor
+review_status: machine_draft

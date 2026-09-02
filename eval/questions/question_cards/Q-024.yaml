@@ -1,0 +1,22 @@
+question_id: Q-024
+question: 为什么CPLD下建议挂载EEPROM？
+task_type: design_decision_lookup
+business_context: 硬件设计意图
+related_source_ids:
+- SRC-9E3D43D729
+evidence_locations:
+- 会议纪要 EEPROM建议句(存储内容)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出需存储的信息类别
+- 注明建议出处
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

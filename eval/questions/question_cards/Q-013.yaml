@@ -1,0 +1,21 @@
+question_id: Q-013
+question: 热摸底试验的结论是什么？
+task_type: test_result_lookup
+business_context: 验收结论追溯
+related_source_ids:
+- SRC-321374652A
+evidence_locations:
+- 总结报告 '热摸底试验通过'结论句
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出结论及位置
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

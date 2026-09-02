@@ -1,0 +1,21 @@
+question_id: Q-003
+question: 电源模块IDS表包含哪些接口数据单？
+task_type: interface_lookup
+business_context: 接口数据单完整性核对
+related_source_ids:
+- SRC-D24F1ADE39
+evidence_locations:
+- '电源模块IDS 目录标题(接口数据单1~12: 机械特性/热特性/电源/电连接器/接点分配/接地等)'
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 按序号列出全部接口数据单名称
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

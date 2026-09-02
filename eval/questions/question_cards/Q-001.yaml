@@ -1,0 +1,24 @@
+question_id: Q-001
+question: 智加X100计算模块的处理器由哪些部分组成？
+task_type: parameter_lookup
+business_context: 单机规格确认
+related_source_ids:
+- SRC-117228955F
+- SRC-F0D610E0D6
+evidence_locations:
+- 技术说明书 表3.5 特性和规格(处理器行)
+- 总体设计方案 3.3 智能计算模块总体设计
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 列出全部处理器构成并引用表/节位置
+forbidden_claims:
+- 不得遗漏 GPU 部分
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

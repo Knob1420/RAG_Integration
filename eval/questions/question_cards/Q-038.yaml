@@ -1,0 +1,23 @@
+question_id: Q-038
+question: 0813测试中'点胶固定后复测'的复测结果记录是否完整？
+task_type: insufficient_evidence
+business_context: 测试记录完整性
+related_source_ids:
+- SRC-6ED2CE6761
+evidence_locations:
+- 0813测试与问题记录 2.2.3 点胶固定后复测 节
+answerable: partially_answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: 若复测结论缺失须显式说明，不得补写
+required_claims:
+- 给出该节已有的记录内容类型
+- 判断结论字段是否完整(部分可答)
+forbidden_claims:
+- 不得代填复测结论
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

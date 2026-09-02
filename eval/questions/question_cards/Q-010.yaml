@@ -1,0 +1,22 @@
+question_id: Q-010
+question: 计算模块安装时导热硅脂用量有什么要求？
+task_type: parameter_lookup
+business_context: 装配工艺
+related_source_ids:
+- SRC-117228955F
+- SRC-0DF11E7A29
+evidence_locations:
+- 技术说明书 2.2 注意事项(导热硅脂用量句)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出用量上限并引用章节
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 1
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

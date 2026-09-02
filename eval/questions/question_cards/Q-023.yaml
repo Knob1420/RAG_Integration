@@ -1,0 +1,24 @@
+question_id: Q-023
+question: FPGA上注更新通道存在什么问题？会议提出了什么改进建议？
+task_type: meeting_action_lookup
+business_context: 在轨更新方案演进
+related_source_ids:
+- SRC-9E3D43D729
+- SRC-F0D610E0D6
+evidence_locations:
+- 会议纪要 上注通道段(422速率低/千兆网预留句)
+- 总体设计方案 3.6.1-3.6.4 在轨更新各节
+answerable: partially_answerable
+requires_multiple_sources: true
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 给出问题与建议
+- 对照总体设计方案 3.6 节是否体现(部分可答)
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

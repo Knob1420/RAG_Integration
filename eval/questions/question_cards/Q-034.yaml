@@ -1,0 +1,25 @@
+question_id: Q-034
+question: 计算模块与电源模块说明书的文档版本标注是什么？IDS表的修订版本机制如何记录？
+task_type: time_or_version_compare
+business_context: 文档版本体系
+related_source_ids:
+- SRC-117228955F
+- SRC-2AC203A529
+- SRC-D24F1ADE39
+evidence_locations:
+- 两份说明书 文件名/文内版本字段
+- IDS表 修订表(修订前版本号/修订后版本号/修订日期 列)
+answerable: answerable
+requires_multiple_sources: true
+version_or_time_constraint: 区分 文件名版本号 / 文内版本字段 / 修订表条目
+status_constraint: NONE
+required_claims:
+- 给出各文档的版本标注来源
+- 说明IDS修订表结构与最新版本确定方法
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

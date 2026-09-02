@@ -1,0 +1,22 @@
+question_id: Q-022
+question: 初样方案讨论会对正样件FPGA和CPU器件等级提出了什么建议？
+task_type: meeting_action_lookup
+business_context: 元器件等级决策
+related_source_ids:
+- SRC-9E3D43D729
+evidence_locations:
+- 会议纪要 宇航级器件建议句
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: 建议类表述不得写成已决定
+required_claims:
+- 给出建议内容与位置
+forbidden_claims:
+- 不得声称正样已实际采用宇航级(未见证据)
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft

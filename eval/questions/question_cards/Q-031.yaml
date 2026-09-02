@@ -1,0 +1,25 @@
+question_id: Q-031
+question: 技术说明书V1.0(docx)与其盖章版PDF内容是否一致？差异如何界定？
+task_type: cross_document_trace
+business_context: 版本链与主副本判定
+related_source_ids:
+- SRC-117228955F
+- SRC-0DF11E7A29
+evidence_locations:
+- 两文件结构对照(docx 章节标题 vs pdf 书签/文本)
+- P00-sample-log 同名盖章版记录
+answerable: partially_answerable
+requires_multiple_sources: true
+version_or_time_constraint: docx为V1.0名义项; 盖章版为签署版
+status_constraint: NONE
+required_claims:
+- 给出章节级一致性结论方法
+- 明确两文件的主副本关系建议
+forbidden_claims:
+- 不得在未逐节比对前声称完全一致
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: hard
+generation_method: duplicate_pair_derived
+review_status: machine_draft

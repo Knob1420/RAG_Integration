@@ -1,0 +1,25 @@
+question_id: Q-032
+question: 总结报告中的试验执行情况与环境试验大纲规定的项目如何对应？有无大纲规定但总结未提及的项目？
+task_type: cross_document_trace
+business_context: 大纲↔执行闭环
+related_source_ids:
+- SRC-CE7695FE95
+- SRC-321374652A
+evidence_locations:
+- 大纲 '验收试验项目和顺序' 表
+- 总结报告 各试验结论句/执行情况节
+answerable: partially_answerable
+requires_multiple_sources: true
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- '逐项目标注: 大纲有/总结有、大纲有/总结未见'
+- 对'未见'项说明是未做还是未写（证据不足时标注）
+forbidden_claims:
+- 不得将'总结未提及'直接断言为'未执行'
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: hard
+generation_method: profile_anchor
+review_status: machine_draft

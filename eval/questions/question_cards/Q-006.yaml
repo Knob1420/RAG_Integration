@@ -1,0 +1,23 @@
+question_id: Q-006
+question: CPU遥控协议与CPU遥测协议各自的最后修订时间是多少？
+task_type: parameter_lookup
+business_context: 协议版本核对
+related_source_ids:
+- SRC-3956F61513
+evidence_locations:
+- 遥控遥测汇总表 sheet'CPU遥控协议'与'CPU遥测协议' 表头行(最后修订时间)
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: 答案须以表内'最后修订时间'为准，非文件 mtime
+status_constraint: NONE
+required_claims:
+- 给出两个 sheet 各自的修订时间
+- 区分遥控与遥测
+forbidden_claims:
+- 不得用 filesystem_mtime 回答
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 3
+difficulty: medium
+generation_method: profile_anchor
+review_status: machine_draft

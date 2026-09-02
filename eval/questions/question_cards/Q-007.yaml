@@ -1,0 +1,22 @@
+question_id: Q-007
+question: CPLD遥测代号TMD201/TMD202/TMD203分别对应什么含义？
+task_type: parameter_lookup
+business_context: 遥测判读依据
+related_source_ids:
+- SRC-3956F61513
+evidence_locations:
+- 汇总表 sheet'CPLD遥测' 行 TMD201~TMD203
+answerable: answerable
+requires_multiple_sources: false
+version_or_time_constraint: NONE
+status_constraint: NONE
+required_claims:
+- 逐代号给出含义
+- 注明所在 sheet 与行
+forbidden_claims:
+- 不得编造资料中不存在的数值/结论
+- 不得将 filesystem_mtime 当作 document_version
+value_score: 2
+difficulty: easy
+generation_method: profile_anchor
+review_status: machine_draft
