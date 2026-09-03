@@ -22,4 +22,4 @@ forbidden_claims:
 value_score: 3
 difficulty: hard
 generation_method: profile_anchor
-review_status: machine_draft
+review_status: user_reviewed

@@ -25,4 +25,4 @@ forbidden_claims:
 value_score: 3
 difficulty: medium
 generation_method: manifest_derived
-review_status: machine_draft
+review_status: user_reviewed

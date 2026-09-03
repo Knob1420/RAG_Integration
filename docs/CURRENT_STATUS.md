@@ -12,7 +12,7 @@
   - 数据画像：16 份分层抽样，WPS zip 坑/扫描件/无新依赖三项关键发现（TASK-P00-003B）
   - 问题池：40 问（answerable 29 / partially 9 / unanswerable 2，多来源 13），校验通过（TASK-P00-004）
 - **已登记资料**：83（docx 47 / pdf 26 / xlsx 8 / doc 2；存放仓库外 ../Data）
-- **候选问题**：40（全部 machine_draft）
+- **候选问题**：40（20 问已由用户选定正式测评集，review_status=user_reviewed：Q-002/003/005/006/007/010/011/014/015/017/018/019/023/028/032/034/035/038/039/040；其余 20 仍 machine_draft）
 - **可验证问题**：29（answerable，待用户复核后转正）
 - **跨文档问题**：13（requires_multiple_sources）
 - **冲突或不可回答问题**：11（含纯扫描件 2 个不可答）
