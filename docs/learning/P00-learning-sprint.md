@@ -36,6 +36,10 @@
 | retrieval-problem-map.md | GLM 代写 | 口头复述三条边界结论 |
 | knowledge-log.md | 6 条全 GLM 代写 | 口头复述其中 ≥3 条的推理链 |
 
+## 复盘记录（2026-09-03，通过）
+
+用户口头复述：Q-040 证据链 ✓（补注：完整护栏=对象+时间+类型三重校验，复盘时补齐前两项）；knowledge-log 3 条 ✓；domain-map 3 条关系 ✓（"方案设计→IDS"补注显式/推测标注：该边为推测）。判定：**P00-L 学习门通过**。
+
 ## 工作顺序
 
 1. 逐题：`python scripts/extract_anchors.py <source_id>` 定位 → 自己读原文 → 复制 `question-notebooks/LEARNING_CARD_TEMPLATE.md` 填卡（先不看我写的 question_cards）；
