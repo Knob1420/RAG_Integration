@@ -74,8 +74,8 @@ def q(i, question, ttype, ctx, srcs, ev, ans, multi, vtc, sc, req, fb, vs, dif, 
 A, PA, UA = "answerable", "partially_answerable", "unanswerable"
 ANCH, MANI, DUP = "profile_anchor", "manifest_derived", "duplicate_pair_derived"
 
-# 2026-09-03 用户选定 20 问为正式测评集（review_status: user_reviewed）
-USER_REVIEWED = {2, 3, 5, 6, 7, 10, 11, 14, 15, 17, 18, 19, 23, 28, 32, 34, 35, 38, 39, 40}
+# 2026-09-03 用户选定 20 问为正式测评集（review_status: user_reviewed）；同日补入 Q-037（拒答组），共 21 问
+USER_REVIEWED = {2, 3, 5, 6, 7, 10, 11, 14, 15, 17, 18, 19, 23, 28, 32, 34, 35, 37, 38, 39, 40}
 
 POOL = [
     # ── 参数/接口/IDS（10）──
