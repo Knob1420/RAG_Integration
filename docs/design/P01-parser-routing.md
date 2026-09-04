@@ -10,6 +10,7 @@
   ├─ DOCX → zip 条目检查 → R4 标准版 / R5 WPS 反斜杠版(先修复)
   ├─ DOC  → R6 (LibreOffice 转 docx 后走 R4)
   ├─ XLSX → zip 条目检查 + sheet 形态 → R7 常规 / R8 复杂多区
+  ├─ PPT/PPTX → R10（当前 83 份中无 PPT，预留；素材补充后启用）
   └─ 其他 → R9 拒收（登记不解析）
 ```
 
@@ -109,9 +110,20 @@
 | 失败状态 | 区域识别失败→该 sheet PENDING_REVIEW，不整文件失败 |
 | 质量检查 | 单元格守恒（输出=非空输入，合并展开计入）；表头存在性；隐藏行列保留 |
 
+## R10 PPT/PPTX（预留路由，当前语料无 PPT）
+
+| 项 | 内容 |
+|----|------|
+| 触发 | .pptx（.ppt 先经 LibreOffice 转 pptx）；当前 83 份中无 PPT，素材补充后启用 |
+| 解析 | markitdown（mammoth）→ libreoffice 兜底（Memory 项目 extract.py 已验证的降级链） |
+| extraction_mode | `pptx_structured` |
+| 位置字段 | source_id + **slide_no**（当"页"用）+ 标题占位符（当 section_chain）+ 表格序号/行号 |
+| 质量检查 | 备注页（notes）是否纳入需决策；表格守恒同 R4 |
+| 进索引 | 是（启用后） |
+
 ## R9 不支持格式
 
-扩展名 ∉ {pdf,doc,docx,xlsx}：只登记不解析（zip 维持"暂不展开"决策）；`~$` 锁文件直接过滤。禁止入索引。
+扩展名 ∉ {pdf,doc,docx,xlsx,ppt,pptx}：只登记不解析（zip 维持"暂不展开"决策）；`~$` 锁文件直接过滤。禁止入索引。
 
 ## 路由通用约束
 
