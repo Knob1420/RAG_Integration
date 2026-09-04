@@ -1,0 +1,15 @@
+golden_sample_id,source_id,relative_path,format,route,structure_type,expected_features,selection_reason,regression_focus
+GS-01,SRC-E150838109,00_会议纪要/SCS-01-20240712_3D打印卫星搭载计算载荷讨论纪要-李超.pdf,pdf,R1,text_native,"pages=2;chars~590;cjk~0.57",最简数字版PDF,文本量与页号回链
+GS-02,SRC-0DF11E7A29,3d打印 归档/智加X100模块交付文件盖章/8_智加X100计算模块技术说明书V1.0.docx.pdf,pdf,R1,text_native,"pages=22;chars~13102;numbered_sections~74;version_hits~12",长数字版PDF含大量编号节,章节链与编号节还原
+GS-03,SRC-19DD9BCD6A,00_会议纪要/2025-08-12_3D打印星智加X100载荷处理方式沟通纪要-签署.pdf,pdf,R2,mixed_native_ocr,"pages=9;scan_pages=1;toc=15",混合版：8文字页+1签署扫描页,页级分流与签署页豁免标注
+GS-04,SRC-D669ED4FD3,智加X100（硬件）验收测试记录表.pdf,pdf,R3,text_ocr,"pages=8;native_chars=7;tables_expected_after_ocr=TBD",纯扫描件(8/8页整页图),OCR质量门五项全测
+GS-05,SRC-F0476730C9,3d打印 归档/7_智加X100（硬件）验收测试记录表.pdf,pdf,R3,text_ocr,"pages=8;size=1903571B(与GS-04同尺寸不同哈希)",GS-04近重复副本,OCR后互比+主副本判同回归
+GS-06,SRC-321374652A,3d打印 归档/X100计算模块正样件研制与质量总结报告_20250221.docx,docx,R5,docx_structured_wps,"headings~69;tables~24;codes~15;numbered_sections~199",结构最重的WPS docx,标题层级+多表还原+编号抽取
+GS-07,SRC-117228955F,3d打印 归档/8_智加X100计算模块技术说明书V1.0.docx,docx,R5,docx_structured_wps,"headings~47;tables~8;images~22",WPS docx带插图,图占位+章节链
+GS-08,SRC-9E3D43D729,00_会议纪要/20240306-智加X100初样方案讨论会议纪要.docx,docx,R5,docx_structured_wps,headings=0_expected,无样式标题的会议纪要,无标题文档的降级章节推断
+GS-09,SRC-D24F1ADE39,02-3D打印卫星计算载荷-智加X100计算模块配套电源模块 IDS表/3D打印卫星计算载荷-智加X100计算模块配套电源模块 IDS表_20240924_签署.docx,docx,R5,docx_structured_wps,"headings~12;tables~15;images~31",表格密集型IDS(15表),表格Element行列守恒
+GS-10,SRC-81483943EB,3d打印 归档/3_智加X100计算模块_产品履历书.doc,doc,R6,doc_converted,"chars~12364;cjk~0.17(需复核:表格数字为主);codes~2",.doc转换链,LibreOffice转换质量+cjk门
+GS-11,SRC-50FA015FB7,01_3D打印卫星_智加X100计算模块交付清单_20250124.xlsx,xlsx,R7,xlsx_structured,"sheets=1;cells~35;null_ratio~0.95;merged~4",单sheet稀疏表(大量留白),区域识别+空值容错
+GS-12,SRC-7878EEE3F2,程控时间表8.31.xlsx,xlsx,R8,xlsx_structured,"sheets=2;Sheet2:双时间列+指令码+判据",多行表头+双轨时间列,表头展开与列语义保留
+GS-13,SRC-3956F61513,3D打印星遥控遥测汇总表.xlsx,xlsx,R8,xlsx_structured,"sheets=9;merged~27;formulas~38;related_sheet_groups=4",最复杂xlsx:9关联sheet+公式+修改记录,关联sheet切分+公式求值+单元格守恒
+GS-14,SRC-B0DA913F5C,3D打印_软件版本控制.xlsx,xlsx,R8,xlsx_structured,"sheets=3;rows~20;双版本号列",提测版本/正式版本并列,双版本列字段区分(不混入document_version)
