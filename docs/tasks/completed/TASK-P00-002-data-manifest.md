@@ -2,7 +2,7 @@
 
 ## 状态
 
-IMPLEMENTED
+ACCEPTED
 
 ## 当前项目事实
 
@@ -136,3 +136,5 @@ IMPLEMENTED
 ### 验收状态
 
 （待填）
+
+> 验收记录：2026-09-03 用户确认 P00 验收通过（阶段报告 docs/reports/P00-phase-report.md，复盘记录见 learning/P00-learning-sprint.md）。
