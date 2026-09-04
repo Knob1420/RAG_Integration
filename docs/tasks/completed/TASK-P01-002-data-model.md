@@ -2,7 +2,7 @@
 
 ## 状态
 
-IN_PROGRESS
+ACCEPTED（2026-09-04 用户确认，commit 72c828c）
 
 ## 所属阶段
 
