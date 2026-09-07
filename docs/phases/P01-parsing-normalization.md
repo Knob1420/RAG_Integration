@@ -2,7 +2,7 @@
 
 ## 状态
 
-IN_PROGRESS（2026-09-04 开工）
+PASSED（2026-09-07 用户验收通过，报告 docs/reports/P01-phase-report.md）
 
 ## 学习通过门（验收时须能解释）
 

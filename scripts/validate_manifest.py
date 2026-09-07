@@ -17,9 +17,13 @@ REQUIRED_FIELDS = [
 ]
 # 允许 UNKNOWN 的字段（不得伪造值）
 UNKNOWN_OK_FIELDS = {
-    "document_type", "title", "document_internal_id", "document_version",
-    "effective_version", "document_status", "subsystem",
+    "title", "document_internal_id", "document_status",
     "security_level", "external_model_allowed",
+}
+# P01-004 规则预填字段（产出经 docs/reports/P01-metadata-prefill.md 审计，允许非 UNKNOWN 值）
+PREFILLED_FIELDS = {
+    "document_type", "subsystem", "document_version",
+    "effective_version", "doc_family",
 }
 SUPPORTED_EXTS = {".pdf", ".doc", ".docx", ".xlsx"}
 # 已开放人工确认流程的字段及其合法值（2026-09-01 用户定级：内部可用/YES）
@@ -27,7 +31,9 @@ CONFIRMED_ENUMS = {
     "security_level": {"UNKNOWN", "公开", "内部可用", "受限", "禁止外发"},
     "external_model_allowed": {"UNKNOWN", "YES", "NO"},
 }
-PARSE_STATUS_ENUM = {"NOT_STARTED", "PENDING", "IN_PROGRESS", "DONE", "FAILED"}
+PARSE_STATUS_ENUM = {"NOT_STARTED", "PENDING", "IN_PROGRESS", "DONE",
+                     "PENDING_OCR", "PENDING_REVIEW", "FAILED"}
+SRC_ID_RE = re.compile(r"^SRC-[0-9A-F]{10}$")
 MTIME_RE = re.compile(r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}$")
 SECRET_RE = re.compile(r"(sk-[A-Za-z0-9]{16,}|api[_-]?key\s*[:=]|password\s*[:=]|Bearer\s+\S+)", re.I)
 
@@ -45,7 +51,7 @@ def validate(csv_path: Path) -> dict:
         if col not in header:
             problems.append(f"缺少必需字段: {col}")
     idx = {c: i for i, c in enumerate(header)}
-    for col in UNKNOWN_OK_FIELDS - set(header):
+    for col in (UNKNOWN_OK_FIELDS | PREFILLED_FIELDS) - set(header):
         problems.append(f"缺少需显式标 UNKNOWN 的字段: {col}")
 
     dup_headers = [i for i, r in enumerate(data, 2) if r and r[0] == "source_id"]
@@ -72,7 +78,7 @@ def validate(csv_path: Path) -> dict:
             problems.append(f"第{ln}行 mtime 格式不统一: {cells.get('filesystem_mtime')}")
         if cells.get("parse_status") not in PARSE_STATUS_ENUM:
             problems.append(f"第{ln}行 parse_status 非法枚举: {cells.get('parse_status')}")
-        for col in UNKNOWN_OK_FIELDS & set(header):
+        for col in (UNKNOWN_OK_FIELDS & set(header)) - PREFILLED_FIELDS:
             v = cells.get(col, "")
             if col in CONFIRMED_ENUMS:
                 if v not in CONFIRMED_ENUMS[col]:
@@ -90,6 +96,29 @@ def validate(csv_path: Path) -> dict:
     dup_ids = len(ids) - len(set(ids))
     if dup_ids:
         problems.append(f"source_id 重复 {dup_ids} 个")
+
+    # duplicate_of 引用完整性（P01-003，列存在时才检查）
+    if "duplicate_of" in idx:
+        all_ids = {r[0] for r in data if r}
+        dup_map = {}
+        for ln, r in enumerate(data, 2):
+            v = (dict(zip(header, r)).get("duplicate_of") or "").strip()
+            if v == "UNKNOWN":
+                v = ""  # 重扫默认值视为未标记
+            sid = dict(zip(header, r)).get("source_id", "")
+            if not v:
+                continue
+            if not SRC_ID_RE.match(v):
+                problems.append(f"第{ln}行 duplicate_of 非法 source_id: {v!r}")
+            elif v == sid:
+                problems.append(f"第{ln}行 duplicate_of 指向自身")
+            elif v not in all_ids:
+                problems.append(f"第{ln}行 duplicate_of 指向不存在的文档: {v}")
+            else:
+                dup_map[sid] = v
+        for sid, master in dup_map.items():
+            if master in dup_map:  # 主副本自身是从 → 两级链（应直接指最终主）
+                problems.append(f"{sid} 的主副本 {master} 本身是从副本")
 
     seen, dup_ck = set(), []
     for c in checksums:

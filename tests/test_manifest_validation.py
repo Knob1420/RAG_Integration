@@ -9,7 +9,7 @@ FIELDS = [
     "checksum_sha256", "filesystem_mtime", "document_type", "title",
     "document_internal_id", "document_version", "effective_version",
     "document_status", "subsystem", "security_level",
-    "external_model_allowed", "parse_status", "notes",
+    "external_model_allowed", "parse_status", "doc_family", "notes",
 ]
 
 
@@ -21,7 +21,7 @@ def write_csv(path, rows):
 
 def good_row(**over):
     r = ["SRC-X", "a.pdf", "dir/a.pdf", ".pdf", "10", "ab" * 32,
-         "2024-03-07T09:18:42"] + ["UNKNOWN"] * 9 + ["NOT_STARTED", ""]
+         "2024-03-07T09:18:42"] + ["UNKNOWN"] * 9 + ["NOT_STARTED", "", ""]
     for k, v in over.items():
         r[FIELDS.index(k)] = v
     return r
@@ -75,8 +75,8 @@ def test_confirmed_enum_fields_pass_and_bad_values_fail(tmp_path):
 
 def test_forged_unknown_field_fails(tmp_path):
     f = tmp_path / "m.csv"
-    write_csv(f, [good_row(document_version="V2.3")])
-    assert any("document_version 未确认却填了值" in p for p in validate(f)["problems"])
+    write_csv(f, [good_row(title="伪造标题")])
+    assert any("title 未确认却填了值" in p for p in validate(f)["problems"])
 
 
 def test_ragged_row_and_dup_header_fail(tmp_path):
@@ -101,3 +101,30 @@ def test_duplicate_checksum_warns_not_fails(tmp_path):
     r = validate(f)
     assert r["problems"] == []
     assert any("重复 checksum" in w for w in r["warnings"])
+
+
+def test_duplicate_of_reference_checks(tmp_path):
+    f = tmp_path / "m.csv"
+    header = FIELDS + ["duplicate_of"]
+
+    def row(sid, name, dup=""):
+        return ([sid, name, name, ".pdf", "10", "ab" * 32,
+                 "2024-03-07T09:18:42"] + ["UNKNOWN"] * 9
+                + ["NOT_STARTED", "", "", dup])
+
+    rows = [row("SRC-AAAAAAAA01", "a.pdf"),
+            row("SRC-AAAAAAAA02", "b.pdf", "SRC-AAAAAAAA01")]  # 合法从副本
+    lines = [",".join(header)] + [",".join(r) for r in rows]
+    f.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    r = validate(f)
+    assert not any("duplicate_of" in p for p in r["problems"])
+
+    bad = [row("SRC-AAAAAAAA03", "c.pdf", "SRC-AAAAAAAA03"),   # 自指
+           row("SRC-AAAAAAAA04", "d.pdf", "SRC-DEADBEEF01"),   # 不存在
+           row("SRC-AAAAAAAA05", "e.pdf", "bad")]              # 格式非法
+    lines = [",".join(header)] + [",".join(r) for r in rows[:1] + bad]
+    f.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    ps = validate(f)["problems"]
+    assert any("指向自身" in p for p in ps)
+    assert any("不存在" in p for p in ps)
+    assert any("非法 source_id" in p for p in ps)

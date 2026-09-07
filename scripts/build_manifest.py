@@ -39,6 +39,8 @@ FIELDS = [
     "security_level",
     "external_model_allowed",
     "parse_status",
+    "duplicate_of",
+    "doc_family",
     "notes",
 ]
 
@@ -47,6 +49,8 @@ UNKNOWN_OK_FIELDS = {
     "document_type", "title", "document_internal_id", "document_version",
     "effective_version", "document_status", "subsystem",
     "security_level", "external_model_allowed",
+    "duplicate_of",  # P01-003 主从标记：重扫保留（空=主/独立）
+    "doc_family",    # P01-004 版本族名：重扫保留
 }
 
 
@@ -90,6 +94,8 @@ def scan(root: Path) -> list:
             "security_level": "UNKNOWN",
             "external_model_allowed": "UNKNOWN",
             "parse_status": "NOT_STARTED",
+            "duplicate_of": "UNKNOWN",
+            "doc_family": "UNKNOWN",
             "notes": "",
         })
     return records
